@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { sidebarLinks } from "@/lib/dashboard-routes";
+import { GatedButton } from "@/components/auth/FeatureGate";
 import { ThemeToggle } from "@/components/dashboard/ThemeToggle";
 
 function SidebarIcon({ type }: { type: string }) {
@@ -99,12 +100,12 @@ export function DashboardSidebar() {
             <p className="text-[10px] text-zinc-500 mt-1 leading-snug">
               Unlock high-res exports, more AI credits, and premium assets.
             </p>
-            <button
-              type="button"
+            <GatedButton
+              actionId="upgrade-pro"
               className="mt-3 w-full rounded-lg bg-gradient-to-r from-violet-600 to-blue-600 py-2 text-xs font-semibold text-white hover:opacity-90 transition-opacity"
             >
               Upgrade Now
-            </button>
+            </GatedButton>
           </div>
         </div>
 

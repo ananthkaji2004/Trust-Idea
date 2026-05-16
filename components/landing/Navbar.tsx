@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useAuth } from "@/components/auth/AuthProvider";
 import { LandingButton } from "./ui/LandingButton";
 
 const HEADER_OFFSET = 80;
@@ -21,6 +22,7 @@ function getScrollTop(el: HTMLElement) {
 }
 
 export function Navbar() {
+  const { openLoginModal } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState<SectionId | null>(null);
@@ -167,7 +169,11 @@ export function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
-          <LandingButton variant="ghost" className="px-4 py-2" href="/dashboard">
+          <LandingButton
+            variant="ghost"
+            className="px-4 py-2"
+            onClick={() => openLoginModal("/dashboard")}
+          >
             Login
           </LandingButton>
           <LandingButton variant="primary" className="px-4 py-2" href="/dashboard">

@@ -33,10 +33,10 @@ export function FalVisualLabGallery() {
   return (
     <section className="mb-6">
       <div className="flex items-center justify-between mb-4">
-        <motionless>
+        <div>
           <h2 className="text-lg font-semibold text-white">Fal Visual Lab</h2>
           <p className="text-xs text-zinc-500">AI Generated</p>
-        </motionless>
+        </div>
         <button
           type="button"
           className="hidden sm:flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 text-zinc-400 hover:text-white hover:bg-white/5"
@@ -44,7 +44,7 @@ export function FalVisualLabGallery() {
         >
           →
         </button>
-      </motionless>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         {assets.map((asset) => (
@@ -53,7 +53,7 @@ export function FalVisualLabGallery() {
               {asset.icon && (
                 <div className="absolute inset-0 flex items-center justify-center text-4xl">
                   {asset.icon}
-                </motionless>
+                </div>
               )}
               {asset.showCan && (
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-20 rounded-lg bg-gradient-to-b from-emerald-400 to-emerald-700 border border-emerald-300/30 shadow-lg" />
@@ -63,7 +63,7 @@ export function FalVisualLabGallery() {
                   <div className="h-14 w-8 rounded bg-emerald-600/40 border border-emerald-400/20" />
                   <div className="h-16 w-10 rounded bg-emerald-500/50 border border-emerald-300/30" />
                   <div className="h-12 w-14 rounded bg-zinc-700/50 border border-white/10" />
-                </motionless>
+                </div>
               )}
               {asset.showAd && (
                 <div className="absolute inset-3 rounded-lg border border-white/10 bg-black/40 p-2 flex flex-col justify-between">
@@ -72,9 +72,9 @@ export function FalVisualLabGallery() {
                   <span className="self-start rounded bg-emerald-500 px-2 py-0.5 text-[8px] font-bold text-black">
                     Try Now
                   </span>
-                </motionless>
+                </div>
               )}
-            </motionless>
+            </div>
             <div className="p-3 flex-1 flex flex-col">
               <p className="text-sm font-medium text-white mb-3">{asset.title}</p>
               <div className="mt-auto flex gap-2">
@@ -90,11 +90,11 @@ export function FalVisualLabGallery() {
                 >
                   Download
                 </GatedButton>
-              </motionless>
-            </motionless>
+              </div>
+            </div>
           </article>
         ))}
-      </motionless>
+      </div>
     </section>
   );
 }

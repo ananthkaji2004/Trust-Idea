@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { useDemoGate } from "@/hooks/useDemoGate";
 import type { GatedActionId } from "@/lib/feature-gates";
@@ -14,7 +13,6 @@ type GatedLinkProps = {
 };
 
 export function GatedLink({ href, actionId, className, children }: GatedLinkProps) {
-  const pathname = usePathname();
   const { openLoginModal } = useAuth();
   const { checkGatedAction, isAuthenticated } = useDemoGate();
 

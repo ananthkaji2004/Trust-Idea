@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState, type CSSProperties, type MouseEvent } from "react";
+import { useAuth } from "@/components/auth/AuthProvider";
 import { FounderAvatars } from "./ui/FounderAvatars";
 import { LandingButton } from "./ui/LandingButton";
 import { HeroBooth } from "./HeroBooth";
@@ -83,20 +84,16 @@ function GitHubIcon() {
   );
 }
 
-function EmailIcon() {
+function AppleIcon() {
   return (
-    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-      />
+    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C4.79 15.25 3.6 10.54 6.32 7.45c1.35-1.6 3.28-2.51 5.15-2.39 1.21.07 2.08.63 3.15.63 1.04 0 1.87-.51 3.18-.55 1.35-.03 2.61.74 3.5 1.88-3.08 1.88-2.58 6.05.52 7.35-.63 1.64-1.45 3.25-2.77 4.91zM14.02 4.2c.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
     </svg>
   );
 }
 
 export function Hero() {
+  const { openLoginModal } = useAuth();
   const heroRef = useRef<HTMLDivElement>(null);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
@@ -150,14 +147,26 @@ export function Hero() {
             </div>
 
             <div className="hero-enter hero-delay-4 mt-6 flex flex-wrap gap-2">
-              <LandingButton variant="oauth" className="px-4" href="/dashboard">
+              <LandingButton
+                variant="oauth"
+                className="px-4"
+                onClick={() => openLoginModal("/dashboard")}
+              >
                 <GoogleIcon /> Google
               </LandingButton>
-              <LandingButton variant="oauth" className="px-4" href="/dashboard">
+              <LandingButton
+                variant="oauth"
+                className="px-4"
+                onClick={() => openLoginModal("/dashboard")}
+              >
                 <GitHubIcon /> GitHub
               </LandingButton>
-              <LandingButton variant="oauth" className="px-4" href="/dashboard">
-                <EmailIcon /> Email
+              <LandingButton
+                variant="oauth"
+                className="px-4"
+                onClick={() => openLoginModal("/dashboard")}
+              >
+                <AppleIcon /> Apple
               </LandingButton>
             </div>
 

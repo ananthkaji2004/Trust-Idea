@@ -1,3 +1,4 @@
+import { DemoBanner } from "@/components/auth/DemoBanner";
 import { DashboardMobileNav } from "@/components/dashboard/DashboardMobileNav";
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import { DashboardTopNav } from "@/components/dashboard/DashboardTopNav";
@@ -19,6 +20,7 @@ export default function DashboardLayout({
       <main className="lg:pl-60 pt-16 min-h-screen">
         <div className="p-4 md:p-6 lg:p-8 max-w-[1600px]">
           <DashboardMobileNav />
+          <DemoBanner />
           {children}
         </div>
       </main>
