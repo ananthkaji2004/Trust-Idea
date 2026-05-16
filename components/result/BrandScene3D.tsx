@@ -1,19 +1,23 @@
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-export function BrandScene3D() {
+export function BrandScene3D({
+  subtitle = "CSS 3D scene — Urban Brew Ceylon cup and retail box.",
+}: {
+  subtitle?: string;
+} = {}) {
   const boxSize = 80;
   const half = boxSize / 2;
 
   return (
-    <section>
+    <section id="brand-reality" className="scroll-mt-24">
       <SectionHeader
         eyebrow="3D Brand Reality"
         title="Packaging & product preview"
-        description="CSS 3D scene — Urban Brew Ceylon cup and retail box."
+        description={subtitle}
         align="center"
       />
-      <GlassCard className="flex flex-col items-center py-12" glow="emerald">
+      <GlassCard className="flex flex-col items-center py-12" glow="purple">
         <div className="perspective-scene h-72 w-full max-w-md">
           <div className="brand-scene relative mx-auto h-56 w-56">
             {/* Box */}

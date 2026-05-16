@@ -2,11 +2,17 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import type { BrandResult } from "@/lib/types";
 
-export function TrustScore({ brand }: { brand: BrandResult }) {
+export function TrustScore({
+  brand,
+  compact = false,
+}: {
+  brand: BrandResult;
+  compact?: boolean;
+}) {
   const { overall, metrics, recommendation } = brand.trustScore;
 
   return (
-    <section>
+    <section className={compact ? "py-4" : undefined}>
       <SectionHeader
         eyebrow="AI Trust Score"
         title="Launch readiness"

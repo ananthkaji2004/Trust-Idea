@@ -2,50 +2,63 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/create", label: "Create" },
-  { href: "/result", label: "Result" },
-];
+import { navAnchors } from "@/lib/landing-data";
+import { GlowButton } from "@/components/ui/GlowButton";
 
 export function Navbar() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
+  const loginHref = isHome ? "#sign-in" : "/#sign-in";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#07070d]/80 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
-        <Link href="/" className="group flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-400 to-purple-500 text-sm font-bold text-black">
-            V
+    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#06060f]/85 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 md:px-6">
+        <Link href="/" className="group flex shrink-0 items-center gap-2">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 via-indigo-500 to-cyan-400 text-sm font-bold text-white shadow-lg shadow-violet-500/25">
+            TI
           </span>
-          <span className="text-lg font-semibold text-white group-hover:text-emerald-300 transition-colors">
-            Veridia AI
+          <span className="text-lg font-semibold text-white transition-colors group-hover:text-violet-300">
+            Trust Idea
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm transition-colors ${
-                pathname === link.href
-                  ? "text-emerald-400"
-                  : "text-zinc-400 hover:text-white"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-6 md:flex">
+          {isHome
+            ? navAnchors.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))
+            : (
+              <>
+                <Link
+                  href="/create"
+                  className="text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                  Create
+                </Link>
+                <Link
+                  href="/result"
+                  className="text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                  Result
+                </Link>
+              </>
+            )}
         </div>
 
-        <Link
-          href="/create"
-          className="rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-2 text-sm font-semibold text-black transition hover:from-emerald-400 hover:to-emerald-500"
-        >
-          Start building
-        </Link>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <GlowButton href={loginHref} variant="ghost" className="!px-4 !py-2">
+            Log in
+          </GlowButton>
+          <GlowButton href="/create" className="!px-4 !py-2">
+            Get started
+          </GlowButton>
+        </div>
       </nav>
     </header>
   );
