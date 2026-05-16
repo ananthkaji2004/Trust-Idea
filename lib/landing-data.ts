@@ -91,7 +91,7 @@ export const ctaCopy = {
   badge: "Start building today",
   title: "Ready to turn your idea into brand reality?",
   description:
-    "Join the demo — generate a full brand kit in seconds. Sign in with Google, GitHub, or email (demo only).",
+    "Join the demo — generate a full brand kit in seconds. Sign in with Google or email.",
   primaryCta: "Get started free",
   secondaryCta: "View sample result",
 };

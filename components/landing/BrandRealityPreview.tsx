@@ -3,7 +3,7 @@ import { SectionHeader } from "./ui/SectionHeader";
 
 export function BrandRealityPreview() {
   return (
-    <section id="3d-brand-reality" className="relative py-20 md:py-28 z-10">
+    <section id="3d-brand-reality" className="relative py-20 md:py-28 z-10 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal variant="fade-up">
           <SectionHeader

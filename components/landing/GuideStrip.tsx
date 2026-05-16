@@ -1,9 +1,14 @@
+"use client";
+
+import { useAuth } from "@/components/auth/AuthProvider";
 import { LandingButton } from "./ui/LandingButton";
 import { ScrollReveal } from "./ui/ScrollReveal";
 
 export function GuideStrip() {
+  const { openLoginModal } = useAuth();
+
   return (
-    <section id="guide" className="relative py-20 md:py-28 z-10">
+    <section id="guide" className="relative py-20 md:py-28 z-10 scroll-mt-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <ScrollReveal variant="scale-up" duration={850}>
           <div className="glass-card p-10 md:p-14 border-violet-500/20 shadow-[0_0_80px_rgba(168,85,247,0.15)]">
@@ -15,10 +20,17 @@ export function GuideStrip() {
               Join thousands of founders using TRUST IDEA to turn ideas into launch-ready
               brand kits — powered by Fal visuals, 3D previews, and AI Trust Scores.
             </p>
-            <ScrollReveal variant="fade-up" delay={200} className="mt-8 flex flex-wrap justify-center gap-3">
-              <LandingButton variant="primary">Get Started Free</LandingButton>
-              <LandingButton variant="outline">Read the Guide</LandingButton>
-            </ScrollReveal>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <LandingButton
+                variant="primary"
+                onClick={() => openLoginModal("/dashboard")}
+              >
+                Get Started Free
+              </LandingButton>
+              <LandingButton variant="outline" href="#how-it-works">
+                Read the Guide
+              </LandingButton>
+            </div>
           </div>
         </ScrollReveal>
       </div>

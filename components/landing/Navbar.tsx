@@ -2,9 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAuth } from "@/components/auth/AuthProvider";
+import { LANDING_HEADER_OFFSET, scrollToLandingSection } from "@/lib/landing-scroll";
 import { LandingButton } from "./ui/LandingButton";
 
-const HEADER_OFFSET = 80;
+const HEADER_OFFSET = LANDING_HEADER_OFFSET;
 
 /** Top-to-bottom — must match section order on the landing page */
 const navLinks = [
@@ -87,15 +88,9 @@ export function Navbar() {
   }, [updateIndicator]);
 
   const scrollToSection = (id: SectionId) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
     isClickScrolling.current = true;
     setActiveId(id);
-
-    const top = getScrollTop(el) - HEADER_OFFSET;
-    window.scrollTo({ top, behavior: "smooth" });
-
+    scrollToLandingSection(id);
     window.setTimeout(() => {
       isClickScrolling.current = false;
     }, 800);
@@ -176,7 +171,11 @@ export function Navbar() {
           >
             Login
           </LandingButton>
-          <LandingButton variant="primary" className="px-4 py-2" href="/dashboard">
+          <LandingButton
+            variant="primary"
+            className="px-4 py-2"
+            onClick={() => openLoginModal("/dashboard")}
+          >
             Get Started Free
           </LandingButton>
         </div>
@@ -223,7 +222,7 @@ export function Navbar() {
               <LandingButton variant="ghost" onClick={() => openLoginModal("/dashboard")}>
                 Login
               </LandingButton>
-              <LandingButton variant="primary" href="/dashboard">
+              <LandingButton variant="primary" onClick={() => openLoginModal("/dashboard")}>
                 Get Started Free
               </LandingButton>
             </div>

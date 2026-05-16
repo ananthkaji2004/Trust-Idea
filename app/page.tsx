@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { AuthErrorBanner } from "@/components/auth/AuthErrorBanner";
 import { Navbar } from "@/components/landing/Navbar";
 import { ScrollProgress } from "@/components/landing/ScrollProgress";
 import { Hero } from "@/components/landing/Hero";
@@ -10,6 +12,9 @@ import { GuideStrip } from "@/components/landing/GuideStrip";
 export default function Home() {
   return (
     <main className="relative min-h-screen z-10">
+      <Suspense fallback={null}>
+        <AuthErrorBanner />
+      </Suspense>
       <ScrollProgress />
       <Navbar />
       <Hero />

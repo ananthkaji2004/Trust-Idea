@@ -35,7 +35,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-20 md:py-28 z-10">
+    <section id="how-it-works" className="relative py-20 md:py-28 z-10 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal variant="fade-up">
           <SectionHeader

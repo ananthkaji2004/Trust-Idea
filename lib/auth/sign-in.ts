@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/client";
 
-export type OAuthProvider = "google" | "github" | "apple";
+export type OAuthProvider = "google";
 
 export function getAuthCallbackUrl(nextPath: string = "/dashboard") {
   const origin =
@@ -13,13 +13,16 @@ export function getAuthCallbackUrl(nextPath: string = "/dashboard") {
 
 export async function signInWithProvider(provider: OAuthProvider, nextPath: string = "/dashboard") {
   const supabase = createClient();
-  const { error } = await supabase.auth.signInWithOAuth({
+  const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
     options: {
       redirectTo: getAuthCallbackUrl(nextPath),
     },
   });
   if (error) throw error;
+  if (data?.url) {
+    window.location.href = data.url;
+  }
 }
 
 export async function signInWithEmail(email: string, nextPath: string = "/dashboard") {

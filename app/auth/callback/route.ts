@@ -13,6 +13,12 @@ export async function GET(request: Request) {
       const safeNext = next.startsWith("/") && !next.startsWith("//") ? next : "/dashboard";
       return NextResponse.redirect(`${origin}${safeNext}`);
     }
+    const reason =
+      error.message?.toLowerCase().includes("exchange") ||
+      error.message?.toLowerCase().includes("external")
+        ? "exchange"
+        : "1";
+    return NextResponse.redirect(`${origin}/?auth_error=${reason}`);
   }
 
   return NextResponse.redirect(`${origin}/?auth_error=1`);

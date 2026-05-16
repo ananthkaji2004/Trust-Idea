@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/Badge";
 
 const providers = [
   { id: "google", label: "Continue with Google", icon: "G" },
-  { id: "github", label: "Continue with GitHub", icon: "⌘" },
   { id: "email", label: "Continue with Email", icon: "✉" },
 ] as const;
 

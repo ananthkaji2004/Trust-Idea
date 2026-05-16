@@ -37,7 +37,7 @@ const founderFeatures = [
 
 export function ModernFoundersFeatures() {
   return (
-    <section id="platform" className="relative py-20 md:py-28 z-10">
+    <section id="platform" className="relative py-20 md:py-28 z-10 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal variant="blur-in" duration={800}>
           <SectionHeader
