@@ -1,7 +1,6 @@
-import { DemoBanner } from "@/components/auth/DemoBanner";
-import { DashboardMobileNav } from "@/components/dashboard/DashboardMobileNav";
-import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
-import { DashboardTopNav } from "@/components/dashboard/DashboardTopNav";
+import type { ReactNode } from "react";
+
+import { DashboardShell } from "@/components/dashboard/DashboardShell";
 
 export const metadata = {
   title: "Dashboard — TRUST IDEA",
@@ -11,19 +10,7 @@ export const metadata = {
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
-  return (
-    <div className="relative min-h-screen bg-[#050505] z-10">
-      <DashboardTopNav />
-      <DashboardSidebar />
-      <main className="lg:pl-60 pt-16 min-h-screen">
-        <div className="p-4 md:p-6 lg:p-8 max-w-[1600px]">
-          <DashboardMobileNav />
-          <DemoBanner />
-          {children}
-        </div>
-      </main>
-    </div>
-  );
+  return <DashboardShell>{children}</DashboardShell>;
 }

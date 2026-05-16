@@ -1,8 +1,8 @@
 "use client";
 
+import { OAuthProviderChip } from "@/components/auth/OAuthProviderChip";
 import { oauthProviderMeta } from "@/components/auth/OAuthBrandIcons";
 import { useOAuthSignIn } from "@/components/auth/useOAuthSignIn";
-import { LandingButton } from "./ui/LandingButton";
 
 const OAUTH_NEXT = "/dashboard";
 
@@ -18,17 +18,15 @@ export function HeroOAuthButtons() {
       )}
       <div className="flex flex-wrap gap-2">
         {oauthProviderMeta.map(({ id, label, Logo }) => (
-          <LandingButton
+          <OAuthProviderChip
             key={id}
-            variant="oauth"
-            className="px-4"
             disabled={loading !== null}
-            onClick={() => signIn(id, OAUTH_NEXT)}
-            aria-label={`Continue with ${label}`}
+            ariaLabel={`Continue with ${label}`}
+            onPrimaryClick={() => signIn(id, OAUTH_NEXT)}
           >
             <Logo size={18} className="shrink-0" />
             {loading === id ? "Redirecting…" : label}
-          </LandingButton>
+          </OAuthProviderChip>
         ))}
       </div>
     </div>

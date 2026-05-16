@@ -37,8 +37,8 @@ const founderFeatures = [
 
 export function ModernFoundersFeatures() {
   return (
-    <section id="platform" className="relative py-20 md:py-28 z-10 scroll-mt-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="platform" className="trust-section scroll-mt-24">
+      <div className="trust-container">
         <ScrollReveal variant="blur-in" duration={800}>
           <SectionHeader
             badge="For Founders"
@@ -47,7 +47,7 @@ export function ModernFoundersFeatures() {
           />
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {founderFeatures.map((feature, index) => (
             <ScrollReveal
               key={feature.title}
@@ -55,10 +55,10 @@ export function ModernFoundersFeatures() {
               delay={(index % 3) * 100 + Math.floor(index / 3) * 80}
               duration={650}
             >
-              <GlassCard className="h-full">
+              <GlassCard className="h-full min-h-[210px]">
                 <div className="h-1 w-12 rounded-full bg-gradient-to-r from-violet-500 to-blue-500 mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{feature.description}</p>
+                <h3 className="mb-2 text-lg font-semibold text-zinc-950 dark:text-white">{feature.title}</h3>
+                <p className="trust-copy">{feature.description}</p>
               </GlassCard>
             </ScrollReveal>
           ))}

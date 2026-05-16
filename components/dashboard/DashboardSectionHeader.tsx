@@ -6,8 +6,9 @@ type DashboardSectionHeaderProps = {
 export function DashboardSectionHeader({ title, description }: DashboardSectionHeaderProps) {
   return (
     <div className="mb-6">
-      <h1 className="text-2xl md:text-3xl font-bold text-white">{title}</h1>
-      <p className="mt-2 text-sm text-zinc-400 max-w-2xl leading-relaxed">{description}</p>
+      <p className="trust-kicker mb-3">Dashboard</p>
+      <h1 className="trust-heading">{title}</h1>
+      <p className="trust-copy mt-3 max-w-2xl">{description}</p>
     </div>
   );
 }

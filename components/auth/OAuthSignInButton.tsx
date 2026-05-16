@@ -1,6 +1,6 @@
 "use client";
 
-import { LandingButton } from "@/components/landing/ui/LandingButton";
+import { OAuthProviderChip } from "@/components/auth/OAuthProviderChip";
 import { oauthProviderMeta } from "@/components/auth/OAuthBrandIcons";
 import { useOAuthSignIn } from "@/components/auth/useOAuthSignIn";
 import type { OAuthProvider } from "@/lib/auth/sign-in";
@@ -27,16 +27,15 @@ export function OAuthSignInButton({
 
   return (
     <>
-      <LandingButton
-        variant="oauth"
-        className={`px-4 ${className}`}
+      <OAuthProviderChip
+        className={className}
         disabled={loading !== null}
-        onClick={() => signIn(provider, nextPath)}
-        aria-label={`Continue with ${label}`}
+        ariaLabel={`Continue with ${label}`}
+        onPrimaryClick={() => signIn(provider, nextPath)}
       >
         <Logo size={18} className="shrink-0" />
         {showLabel && (isLoading ? "Redirecting…" : label)}
-      </LandingButton>
+      </OAuthProviderChip>
       {error && loading === null && (
         <p className="sr-only" role="alert">
           {error}

@@ -7,9 +7,9 @@ interface BadgeProps {
 
 export function Badge({ children, variant = "neutral" }: BadgeProps) {
   const styles = {
-    emerald: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
-    purple: "border-purple-500/30 bg-purple-500/10 text-purple-300",
-    neutral: "border-white/10 bg-white/5 text-zinc-300",
+    emerald: "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+    purple: "border-purple-500/30 bg-purple-500/10 text-purple-700 dark:text-purple-300",
+    neutral: "border-zinc-300/80 bg-zinc-100 text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300",
   };
 
   return (

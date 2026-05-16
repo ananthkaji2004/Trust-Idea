@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -43,16 +44,21 @@ const config: Config = {
           "33%": { transform: "translate(-8px, 5px)" },
           "66%": { transform: "translate(5px, -6px)" },
         },
+        "drift-soft": {
+          "0%, 100%": { transform: "translate(0px, 0px)" },
+          "50%": { transform: "translate(4px, -6px)" },
+        },
         shimmer: {
           "0%": { backgroundPosition: "200% center" },
           "100%": { backgroundPosition: "-200% center" },
         },
       },
       animation: {
-        float: "float 5s ease-in-out infinite",
+        float: "float 7s ease-in-out infinite",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        "drift-slow": "drift-slow 8s ease-in-out infinite",
-        "drift-slow-2": "drift-slow-2 9s ease-in-out infinite",
+        "drift-slow": "drift-slow 18s ease-in-out infinite",
+        "drift-slow-2": "drift-slow-2 20s ease-in-out infinite",
+        "drift-soft": "drift-soft 16s ease-in-out infinite",
         shimmer: "shimmer 4s linear infinite",
       },
     },

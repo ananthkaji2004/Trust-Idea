@@ -8,7 +8,7 @@ export default function TrustScorePage() {
         title="AI Trust Score"
         description="See how trustworthy and clear your brand appears to customers."
       />
-      <div className="max-w-2xl">
+      <div className="max-w-4xl">
         <TrustScoreCard />
       </div>
     </>

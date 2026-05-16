@@ -8,18 +8,18 @@ export function DashboardMobileNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="lg:hidden -mx-4 md:-mx-6 mb-6 overflow-x-auto scrollbar-hide">
-      <div className="flex gap-2 px-4 md:px-6 min-w-max pb-1">
+    <nav className="-mx-4 mb-6 overflow-x-auto md:-mx-6 lg:hidden">
+      <div className="flex min-w-max gap-2 px-4 pb-1 md:px-6">
         {sidebarLinks.map((link) => {
           const active = pathname === link.href;
           return (
             <Link
               key={link.label}
               href={link.href}
-              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+              className={`min-h-9 shrink-0 rounded-full px-3 py-2 text-xs font-medium transition-colors ${
                 active
-                  ? "bg-violet-600/25 text-white border border-violet-500/40"
-                  : "text-zinc-400 border border-white/10 hover:text-white"
+                  ? "border border-violet-500/40 bg-violet-600/25 text-zinc-950 dark:text-white"
+                  : "border border-zinc-200/80 text-zinc-600 hover:text-zinc-950 dark:border-white/10 dark:text-zinc-400 dark:hover:text-white"
               }`}
             >
               {link.label}

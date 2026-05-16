@@ -1,13 +1,15 @@
 import Link from "next/link";
+import { MoreOptionsMenuButton } from "@/components/ui/MoreOptionsMenuButton";
 import { dashboardRoutes } from "@/lib/dashboard-routes";
 
 export function BrandRealityCard() {
   return (
-    <article className="glass-card overflow-hidden p-0 h-full flex flex-col">
-      <div className="p-4 pb-2">
-        <h3 className="text-sm font-semibold text-white">3D Brand Reality Preview</h3>
+    <article className="glass-card trust-card-hover flex h-full min-h-[360px] flex-col overflow-hidden p-0">
+      <div className="p-5 pb-3">
+        <h3 className="text-sm font-semibold text-zinc-950 dark:text-white">3D Brand Reality Preview</h3>
+        <p className="mt-1 text-xs text-zinc-500">Neon booth stage synced to your kit.</p>
       </div>
-      <div className="relative flex-1 min-h-[180px] mx-4 mb-4 rounded-xl overflow-hidden border border-violet-500/20 bg-gradient-to-br from-violet-950/80 via-indigo-950 to-black">
+      <div className="relative mx-5 mb-5 min-h-[210px] flex-1 overflow-hidden rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-950/80 via-indigo-950 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_80%,rgba(168,85,247,0.35),transparent_60%)]" />
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-violet-600/20 to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center perspective-hero preserve-3d">
@@ -17,15 +19,12 @@ export function BrandRealityCard() {
           />
           <div className="absolute top-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded bg-violet-500/20 border border-violet-400/40 blur-sm" />
         </div>
-        <div className="absolute top-3 left-3 flex gap-1">
-          <div className="h-2 w-2 rounded-full bg-violet-400 animate-pulse" />
-          <div className="h-2 w-2 rounded-full bg-blue-400/60" />
-        </div>
+        <MoreOptionsMenuButton className="absolute top-3 right-3" />
       </div>
-      <div className="px-4 pb-4">
+      <div className="mt-auto px-5 pb-5">
         <Link
           href={dashboardRoutes.brandReality}
-          className="block w-full text-center rounded-xl border border-violet-500/40 bg-violet-600/15 py-2.5 text-sm font-medium text-violet-200 hover:bg-violet-600/25 transition-colors"
+          className="trust-button-primary w-full"
         >
           Play 3D Preview
         </Link>

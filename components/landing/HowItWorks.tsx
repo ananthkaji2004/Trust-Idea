@@ -35,8 +35,8 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative py-20 md:py-28 z-10 scroll-mt-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="trust-section scroll-mt-24">
+      <div className="trust-container">
         <ScrollReveal variant="fade-up">
           <SectionHeader
             badge="How It Works"
@@ -45,19 +45,19 @@ export function HowItWorks() {
           />
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {steps.map((item, i) => (
             <ScrollReveal key={item.step} variant="scale-up" delay={i * 120} duration={700}>
-              <GlassCard className="relative overflow-hidden h-full">
+              <GlassCard className="relative flex h-full min-h-[300px] flex-col overflow-hidden">
                 <span className="text-5xl font-black text-white/5 absolute -top-2 -right-2">
                   {item.step}
                 </span>
-                <div className={`h-24 rounded-xl ${item.gradient} mb-4 border border-white/10`} />
+                <div className={`mb-4 h-28 rounded-2xl ${item.gradient} border border-white/10`} />
                 <span className="text-xs font-bold text-violet-400 uppercase tracking-wider">
                   Step {item.step}
                 </span>
-                <h3 className="mt-2 text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">{item.description}</p>
+                <h3 className="mt-2 text-lg font-semibold text-zinc-950 dark:text-white">{item.title}</h3>
+                <p className="trust-copy mt-2 flex-1">{item.description}</p>
                 {i < steps.length - 1 && (
                   <div className="hidden lg:block absolute -right-3 top-1/2 w-6 h-px bg-gradient-to-r from-violet-500/50 to-transparent" />
                 )}

@@ -1,14 +1,5 @@
-import { DashboardSectionHeader } from "@/components/dashboard/DashboardSectionHeader";
-import { CreateNewForm } from "./CreateNewForm";
+import { redirect } from "next/navigation";
 
-export default function CreateNewPage() {
-  return (
-    <>
-      <DashboardSectionHeader
-        title="Create New"
-        description="Start a new brand project from your idea."
-      />
-      <CreateNewForm />
-    </>
-  );
+export default function CreateNewRedirectPage() {
+  redirect("/create");
 }

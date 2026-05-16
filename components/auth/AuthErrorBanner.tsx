@@ -1,13 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
 import { getSupabaseGoogleRedirectUri } from "@/lib/auth/config";
 
 type AuthErrorInfo = {
   title: string;
-  body: React.ReactNode;
+  body: ReactNode;
 };
+
+function getAppCallbackExample() {
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  if (typeof window === "undefined") {
+    return fromEnv ? `${fromEnv}/auth/callback` : "http://localhost:3000/auth/callback";
+  }
+  return `${window.location.origin}/auth/callback`;
+}
 
 function parseHashAuthError(): AuthErrorInfo | null {
   if (typeof window === "undefined" || !window.location.hash.includes("error=")) {
@@ -25,8 +33,7 @@ function parseHashAuthError(): AuthErrorInfo | null {
       body: (
         <>
           <span className="block mb-2">
-            Google redirected correctly, but Supabase failed to complete sign-in. Usually the
-            Client ID or Client Secret in Supabase does not match Google Cloud.
+            Google login is not enabled correctly yet. Use email login while OAuth settings are fixed.
           </span>
           <span className="block font-medium text-red-100 mb-1">Fix checklist:</span>
           <ol className="list-decimal list-inside space-y-1 text-red-100/90 text-xs">
@@ -40,7 +47,7 @@ function parseHashAuthError(): AuthErrorInfo | null {
             </li>
             <li>
               Supabase → URL configuration → Redirect URLs: add your app URL, e.g.{" "}
-              <code className="text-red-50">http://localhost:3005/auth/callback</code>
+              <code className="text-red-50 break-all">{getAppCallbackExample()}</code>
             </li>
           </ol>
         </>
@@ -74,9 +81,24 @@ export function AuthErrorBanner() {
     }
 
     const authError = searchParams.get("auth_error");
-    if (authError === "exchange" || authError === "1") {
+    if (authError === "supabase") {
+      setErrorInfo({
+        title: "Supabase is not configured",
+        body: (
+          <>
+            Add <code className="text-red-50">NEXT_PUBLIC_SUPABASE_URL</code> and{" "}
+            <code className="text-red-50">NEXT_PUBLIC_SUPABASE_ANON_KEY</code> to{" "}
+            <code className="text-red-50">.env.local</code>, restart the dev server, then sign in again.
+          </>
+        ),
+      });
+      clearAuthHashAndQuery();
+      return;
+    }
+
+    if (authError === "google_config" || authError === "exchange" || authError === "1") {
       const redirectUri = getSupabaseGoogleRedirectUri();
-      const isExchange = authError === "exchange";
+      const isExchange = authError === "google_config" || authError === "exchange";
       setErrorInfo(
         isExchange
           ? (parseHashAuthError() ?? {
@@ -84,13 +106,15 @@ export function AuthErrorBanner() {
               body: (
                 <>
                   <span className="block mb-2">
-                    Re-paste the Google Client ID and Secret in Supabase (same OAuth client as Google
-                    Cloud). Redirect URI in Google only:{" "}
+                    Google login is not enabled correctly yet. Use email login.
+                  </span>
+                  <span className="block mb-2 text-xs text-red-100/90">
+                    Re-paste Google Client ID + Secret in Supabase and keep this Google redirect URI:{" "}
                     <code className="text-red-50 break-all">{redirectUri}</code>
                   </span>
                   <span className="block text-xs text-red-100/90">
                     Supabase → Redirect URLs:{" "}
-                    <code className="text-red-50">http://localhost:YOUR_PORT/auth/callback</code>
+                    <code className="text-red-50 break-all">{getAppCallbackExample()}</code>
                   </span>
                 </>
               ),
@@ -107,6 +131,21 @@ export function AuthErrorBanner() {
               ),
             },
       );
+      clearAuthHashAndQuery();
+      return;
+    }
+
+    if (authError) {
+      setErrorInfo({
+        title: "Sign-in could not be completed",
+        body: (
+          <>
+            Try signing in again or use email. Confirm your app callback is listed under Supabase → URL
+            configuration → Redirect URLs:{" "}
+            <code className="text-red-50 break-all">{getAppCallbackExample()}</code>
+          </>
+        ),
+      });
       clearAuthHashAndQuery();
     }
   }, [searchParams]);

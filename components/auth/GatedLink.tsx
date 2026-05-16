@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { MouseEvent, ReactNode } from "react";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { useDemoGate } from "@/hooks/useDemoGate";
 import type { GatedActionId } from "@/lib/feature-gates";
@@ -9,7 +10,7 @@ type GatedLinkProps = {
   href: string;
   actionId: GatedActionId;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export function GatedLink({ href, actionId, className, children }: GatedLinkProps) {
@@ -24,7 +25,7 @@ export function GatedLink({ href, actionId, className, children }: GatedLinkProp
     );
   }
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: MouseEvent) => {
     const { allowed, requireLogin } = checkGatedAction(actionId);
     if (!allowed || requireLogin) {
       e.preventDefault();

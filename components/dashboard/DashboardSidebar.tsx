@@ -34,6 +34,40 @@ function SidebarIcon({ type }: { type: string }) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
         </svg>
       );
+    case "sparkle-panel":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6l-4 4V5z"
+          />
+        </svg>
+      );
+    case "cube":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l10 6v12l-10 6-10-6V9l10-6z" />
+        </svg>
+      );
+    case "bookmark":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21V5a2 2 0 012-2h6a2 2 0 012 2v16l-5-3-5 3z" />
+        </svg>
+      );
+    case "doc":
+      return (
+        <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12h6m-6 4h6M7 21h10a2 2 0 002-2V7l-4-4H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+          />
+        </svg>
+      );
     case "globe":
       return (
         <svg className={cls} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,18 +99,18 @@ export function DashboardSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-16 z-40 hidden lg:flex h-[calc(100vh-4rem)] w-60 flex-col border-r border-white/10 bg-[#050505]/90 backdrop-blur-xl">
-      <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+    <aside className="fixed left-0 top-16 z-40 hidden h-[calc(100vh-4rem)] w-60 flex-col border-r border-zinc-200/80 bg-white/90 backdrop-blur-xl dark:border-white/10 dark:bg-[#050505]/90 lg:flex">
+      <nav className="flex-1 space-y-1 overflow-y-auto p-4">
         {sidebarLinks.map((link) => {
           const active = pathname === link.href;
           return (
             <Link
               key={link.label}
               href={link.href}
-              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
+              className={`flex min-h-10 items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-medium transition-colors ${
                 active
-                  ? "bg-violet-600/20 text-white border border-violet-500/30"
-                  : "text-zinc-400 hover:text-white hover:bg-white/5"
+                  ? "bg-violet-600/20 text-zinc-900 dark:text-white border border-violet-500/30"
+                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5"
               }`}
             >
               <SidebarIcon type={link.icon} />
@@ -86,9 +120,9 @@ export function DashboardSidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-white/10 space-y-3">
+      <div className="p-4 border-t border-zinc-200/80 dark:border-white/10 space-y-3">
         <div className="glass-card overflow-hidden p-0">
-          <div className="h-28 bg-gradient-to-br from-violet-900/60 via-indigo-900/40 to-black relative">
+          <div className="relative h-28 bg-gradient-to-br from-violet-900/60 via-indigo-900/40 to-black">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(168,85,247,0.4),transparent_60%)]" />
             <div className="absolute bottom-2 left-2 right-2 flex gap-1">
               <div className="h-6 w-6 rounded bg-violet-500/40 border border-violet-400/30" />
@@ -96,13 +130,13 @@ export function DashboardSidebar() {
             </div>
           </div>
           <div className="p-3">
-            <p className="text-xs font-semibold text-white">Upgrade to Pro</p>
+            <p className="text-xs font-semibold text-zinc-950 dark:text-white">Upgrade to Pro</p>
             <p className="text-[10px] text-zinc-500 mt-1 leading-snug">
               Unlock high-res exports, more AI credits, and premium assets.
             </p>
             <GatedButton
               actionId="upgrade-pro"
-              className="mt-3 w-full rounded-lg bg-gradient-to-r from-violet-600 to-blue-600 py-2 text-xs font-semibold text-white hover:opacity-90 transition-opacity"
+              className="trust-button-primary mt-3 min-h-9 w-full py-2 text-xs"
             >
               Upgrade Now
             </GatedButton>
@@ -112,12 +146,12 @@ export function DashboardSidebar() {
         <ThemeToggle />
         <button
           type="button"
-          className="flex w-full items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm hover:bg-white/10 transition-colors"
+          className="flex min-h-11 w-full items-center gap-3 rounded-2xl border border-zinc-200/80 bg-zinc-50/80 px-3 py-2.5 text-sm transition-colors hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
         >
           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-violet-600 text-xs font-bold text-white">
             F
           </span>
-          <span className="flex-1 text-left text-zinc-200 font-medium">Founder</span>
+          <span className="flex-1 text-left font-medium text-zinc-800 dark:text-zinc-200">Founder</span>
           <svg className="h-4 w-4 shrink-0 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>

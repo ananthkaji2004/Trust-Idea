@@ -20,7 +20,7 @@ export function GlassCard({
 
   return (
     <div
-      className={`glass-card rounded-2xl p-6 transition-all duration-300 hover:border-white/20 ${glowClass} ${className}`}
+      className={`trust-card transition-all duration-300 trust-card-hover ${glowClass} ${className}`}
     >
       {children}
     </div>

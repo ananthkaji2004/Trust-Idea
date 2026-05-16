@@ -15,15 +15,15 @@ export default function GuidePage() {
         title="Guidance"
         description="Tips and walkthroughs for every step of your brand journey."
       />
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
+      <ul className="grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
         {guideTopics.map((topic) => (
           <li key={topic.title}>
-            <article className="glass-card p-5 h-full flex flex-col">
-              <h2 className="text-sm font-semibold text-white">{topic.title}</h2>
-              <p className="text-xs text-zinc-500 mt-2 flex-1">{topic.description}</p>
+            <article className="glass-card trust-card-hover flex h-full min-h-[180px] flex-col p-5">
+              <h2 className="text-sm font-semibold text-zinc-950 dark:text-white">{topic.title}</h2>
+              <p className="trust-copy mt-2 flex-1 text-xs">{topic.description}</p>
               <button
                 type="button"
-                className="mt-4 self-start rounded-lg border border-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/5"
+                className="trust-button-secondary mt-5 self-start text-xs"
               >
                 Read more
               </button>

@@ -2,13 +2,19 @@
 
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { LoginModal } from "@/components/auth/LoginModal";
+import { BrandProjectProvider } from "@/components/providers/BrandProjectProvider";
+import { ToastProvider } from "@/components/providers/ToastProvider";
 import type { ReactNode } from "react";
 
 export function AuthShell({ children }: { children: ReactNode }) {
   return (
-    <AuthProvider>
-      {children}
-      <LoginModal />
-    </AuthProvider>
+    <ToastProvider>
+      <AuthProvider>
+        <BrandProjectProvider>
+          {children}
+          <LoginModal />
+        </BrandProjectProvider>
+      </AuthProvider>
+    </ToastProvider>
   );
 }

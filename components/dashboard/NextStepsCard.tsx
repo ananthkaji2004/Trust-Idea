@@ -5,21 +5,21 @@ import { nextStepLinks } from "@/lib/dashboard-routes";
 
 export function NextStepsCard() {
   return (
-    <article className="glass-card p-5 h-full">
-      <h3 className="text-sm font-semibold text-white mb-4">Next Steps</h3>
-      <ul className="space-y-1">
+    <article className="glass-card trust-card-hover h-full min-h-[360px] p-5">
+      <h3 className="mb-4 text-sm font-semibold text-zinc-950 dark:text-white">Next Steps</h3>
+      <ul className="space-y-2">
         {nextStepLinks.map((step) => (
           <li key={step.label}>
             <GatedLink
               href={step.href}
               actionId="next-step"
-              className="w-full flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm text-zinc-300 hover:bg-white/5 hover:text-white transition-colors group"
+              className="group flex w-full items-center justify-between gap-3 rounded-2xl border border-transparent px-3 py-2.5 text-sm text-zinc-700 transition-colors hover:border-violet-500/20 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/5 dark:hover:text-white"
             >
-              <span className="flex items-center gap-3">
+              <span className="flex min-w-0 items-center gap-3">
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-600/15 border border-violet-500/20 text-violet-400 text-xs">
                   →
                 </span>
-                {step.label}
+                <span className="truncate">{step.label}</span>
               </span>
               <svg
                 className="h-4 w-4 text-zinc-600 group-hover:text-violet-400 transition-colors"

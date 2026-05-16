@@ -3,8 +3,8 @@ import { SectionHeader } from "./ui/SectionHeader";
 
 export function BrandRealityPreview() {
   return (
-    <section id="3d-brand-reality" className="relative py-20 md:py-28 z-10 scroll-mt-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="3d-brand-reality" className="trust-section scroll-mt-24">
+      <div className="trust-container">
         <ScrollReveal variant="fade-up">
           <SectionHeader
             badge="3D Preview"
@@ -14,10 +14,10 @@ export function BrandRealityPreview() {
         </ScrollReveal>
 
         <ScrollReveal variant="scale-up" duration={900}>
-          <div className="relative rounded-3xl border border-white/10 bg-gradient-to-b from-zinc-900/80 to-black overflow-hidden">
+          <div className="glass-card relative overflow-hidden p-0">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.12),transparent_70%)] pointer-events-none" />
 
-            <div className="relative grid lg:grid-cols-2 gap-8 p-8 md:p-12 items-center">
+            <div className="relative grid items-center gap-8 p-5 sm:p-8 md:p-10 lg:grid-cols-2 lg:p-12">
               <ScrollReveal variant="slide-right" delay={150} className="perspective-hero h-64 sm:h-80 preserve-3d flex items-center justify-center">
                 <div
                   className="relative w-full max-w-sm preserve-3d animate-float"
@@ -48,15 +48,15 @@ export function BrandRealityPreview() {
 
               <ScrollReveal variant="slide-left" delay={250}>
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-4">
+                  <h3 className="mb-4 text-2xl font-bold text-zinc-950 dark:text-white">
                     3D Brand Reality Preview
                   </h3>
-                  <p className="text-zinc-400 leading-relaxed mb-6">
+                  <p className="trust-copy mb-6">
                     Place your product in a futuristic neon booth, rotate the scene, and share
                     investor-ready previews — all generated from your brand kit with CSS-powered
                     3D staging.
                   </p>
-                  <ul className="space-y-3 text-sm text-zinc-300">
+                  <ul className="space-y-3 text-sm text-zinc-700 dark:text-zinc-300">
                     {[
                       "Interactive booth lighting and neon frames",
                       "Product pedestal with brand-aligned gradients",

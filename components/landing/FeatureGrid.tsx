@@ -39,8 +39,8 @@ const features = [
 
 export function FeatureGrid() {
   return (
-    <section id="features" className="relative py-20 md:py-28 z-10 scroll-mt-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="features" className="trust-section scroll-mt-24">
+      <div className="trust-container">
         <ScrollReveal variant="fade-up">
           <SectionHeader
             badge="Core Features"
@@ -49,7 +49,7 @@ export function FeatureGrid() {
           />
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {features.map((feature, index) => (
             <ScrollReveal
               key={feature.key}
@@ -57,14 +57,14 @@ export function FeatureGrid() {
               delay={index * 100}
               duration={650}
             >
-              <GlassCard className="flex flex-col h-full">
+              <GlassCard className="flex h-full min-h-[260px] flex-col">
                 <div
                   className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${feature.gradient} text-2xl border border-white/10`}
                 >
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed flex-1">
+                <h3 className="mb-2 text-lg font-semibold text-zinc-950 dark:text-white">{feature.title}</h3>
+                <p className="trust-copy flex-1">
                   {feature.description}
                 </p>
               </GlassCard>

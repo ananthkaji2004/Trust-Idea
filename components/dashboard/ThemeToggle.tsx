@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { saveUserPreferences } from "@/src/lib/database";
 
-export function ThemeToggle() {
+export function ThemeToggle({ compact = false }: { compact?: boolean }) {
   const [isDark, setIsDark] = useState(true);
+  const { user } = useAuth();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -18,13 +21,20 @@ export function ThemeToggle() {
     setIsDark(next);
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem("theme", next ? "dark" : "light");
+    if (user?.id) {
+      void saveUserPreferences(user.id, { theme: next ? "dark" : "light" });
+    }
   }
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      className="flex w-full items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-medium text-zinc-300 hover:bg-white/10 hover:text-white transition-colors"
+      className={`rounded-xl border border-zinc-300/80 dark:border-white/10 dark:bg-white/5 bg-zinc-900/5 text-zinc-800 dark:text-zinc-300 hover:bg-white hover:text-zinc-900 dark:hover:bg-white/10 dark:hover:text-white transition-colors ${
+        compact
+          ? "inline-flex h-9 w-9 items-center justify-center p-0"
+          : "flex w-full items-center gap-3 px-3 py-2.5 text-sm font-medium"
+      }`}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >
       {isDark ? (
@@ -46,7 +56,7 @@ export function ThemeToggle() {
           />
         </svg>
       )}
-      {isDark ? "Light mode" : "Dark mode"}
+      {!compact ? (isDark ? "Light mode" : "Dark mode") : null}
     </button>
   );
 }
