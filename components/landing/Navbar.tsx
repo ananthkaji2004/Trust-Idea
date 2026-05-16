@@ -220,8 +220,12 @@ export function Navbar() {
               );
             })}
             <div className="flex flex-col gap-2 pt-4 mt-2 border-t border-white/10">
-              <LandingButton variant="ghost" href="/dashboard">Login</LandingButton>
-              <LandingButton variant="primary" href="/dashboard">Get Started Free</LandingButton>
+              <LandingButton variant="ghost" onClick={() => openLoginModal("/dashboard")}>
+                Login
+              </LandingButton>
+              <LandingButton variant="primary" href="/dashboard">
+                Get Started Free
+              </LandingButton>
             </div>
           </div>
         </div>
