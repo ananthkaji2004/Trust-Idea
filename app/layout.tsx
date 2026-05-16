@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { AuthShell } from "@/components/auth/AuthShell";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${inter.variable} font-sans bg-black text-zinc-100 antialiased`}>
         <div className="ambient-glow fixed inset-0 pointer-events-none z-0" aria-hidden="true" />
-        {children}
+        <AuthShell>{children}</AuthShell>
       </body>
     </html>
   );
